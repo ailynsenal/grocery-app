@@ -1,0 +1,19 @@
+{
+  "groceryItems": [
+    {
+      "id": 1,
+      "text": "Coffee",
+      "done": false
+    },
+    {
+      "id": 2,
+      "text": "Sugar",
+      "done": false
+    },
+    {
+      "id": 3,
+      "text": "Milk",
+      "done": true
+    }
+  ]
+}

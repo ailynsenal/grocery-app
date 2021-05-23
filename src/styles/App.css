@@ -1,0 +1,26 @@
+.main-app {
+  margin: 48px auto;
+}
+
+.item-list {
+  max-height: 70vh;
+  min-height: 100px;
+  overflow: auto;
+}
+
+.item {
+  border-top: 1px solid #06B6D4;
+}
+
+li:first-child {
+  border-top: none;
+}
+
+.item-checkbox:checked {
+  text-decoration: line-through;
+}
+
+.disabled {
+  pointer-events: none;
+  opacity: 0.6;
+}
