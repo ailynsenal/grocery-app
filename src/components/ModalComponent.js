@@ -48,12 +48,12 @@ export const ModalComponent = ({ groceryItem }) => {
       <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
         <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
         <div className="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
-          <h3 className="text-lg leading-6 font-medium text-gray-900" id="modal-title">
+          <h3 className="text-lg leading-6 font-semibold text-gray-900" id="modal-title">
             {groceryItem ? 'Edit Item' : 'Add Item'}
           </h3>
           <div className="mt-2">
-            <p className="text-sm text-gray-500">
-              <input type="text" onChange={inputChange} value={item} className="pl-2 p-2 border-2 border-cyan-600 hover:border-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 rounded-lg sm:w-full" />
+            <p className="text-sm text-gray-700">
+              <input type="text" onChange={inputChange} value={item} className="pl-2 p-2 border-2 border-cyan-600 hover:border-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 rounded sm:w-full" />
               {isEmptyField &&
                 <div className="text-red-600 font-bold">Required. </div>
               }

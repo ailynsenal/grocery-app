@@ -13,7 +13,7 @@ export const GroceryItemList = () => {
 
   return (
     <>
-      <ul className="item-list w-full p-4">
+      <ul className="item-list w-full p-3">
         { isLoading && !isError && groceryItems.length === 0 && 
           <ImSpinner className="animate-spin w-12 h-12 text-cyan-500 m-auto" />
         }

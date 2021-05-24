@@ -31,6 +31,20 @@ export default (state, action) => {
         isLoading: false,
         isError: false,
       }
+    case 'FILTER_GROCERY_ITEMS':
+      return {
+        ...state,
+        groceryItems: action.payload,
+        isLoading: false,
+        isError: false,
+      }
+    case 'SEARCH_GROCERY_ITEM':
+      return {
+        ...state,
+        groceryItems: action.payload,
+        isLoading: false,
+        isError: false,
+      }
     case 'TOGGLE_MODAL':
       return {
         ...state,

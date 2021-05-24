@@ -24,9 +24,10 @@ export const GlobalProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
   // Actions
-  const getGroceryItems = () => {
+  const getGroceryItems = searchTerm => {
+    let url = searchTerm ? `http://localhost:8000/groceryItems?q=${searchTerm}` : `http://localhost:8000/groceryItems`;
     axios
-      .get("http://localhost:8000/groceryItems")
+      .get(url)
       .then(res => {
         dispatch({
           type: 'GET_GROCERY_ITEMS',
@@ -58,7 +59,7 @@ export const GlobalProvider = ({ children }) => {
       });
   }
 
-  const deleteGroceryItem = (id) => {
+  const deleteGroceryItem = id => {
     axios
       .delete(`http://localhost:8000/groceryItems/${id}`)
       .then(res => {
@@ -75,13 +76,49 @@ export const GlobalProvider = ({ children }) => {
       });
   }
 
-  const updateGroceryItem = (updatedItem) => {
+  const updateGroceryItem = updatedItem => {
     axios
       .put(`http://localhost:8000/groceryItems/${updatedItem.id}`, updatedItem, config)
       .then(res => {
         dispatch({
           type: 'UPDATE_GROCERY_ITEM',
           payload: updatedItem
+        })
+      })
+      .catch(() => {
+        dispatch({
+          type: 'ERROR',
+          payload: true
+        })
+      });
+  }
+
+  const filterGroceryItems = (searchTerm, state) => {
+    let url = searchTerm ? `http://localhost:8000/groceryItems?q=${searchTerm}&done=${state}` : `http://localhost:8000/groceryItems?done=${state}`;
+    axios
+      .get(url)
+      .then(res => {
+        dispatch({
+          type: 'FILTER_GROCERY_ITEMS',
+          payload: res.data
+        })
+      })
+      .catch(() => {
+        dispatch({
+          type: 'ERROR',
+          payload: true
+        })
+      });
+  }
+
+  const searchGroceryItem = (searchTerm, status) => {
+    let url = status ? `http://localhost:8000/groceryItems?q=${searchTerm}&done=${status}` : `http://localhost:8000/groceryItems?q=${searchTerm}`;
+    axios
+      .get(url)
+      .then(res => {
+        dispatch({
+          type: 'SEARCH_GROCERY_ITEM',
+          payload: res.data
         })
       })
       .catch(() => {
@@ -108,6 +145,8 @@ export const GlobalProvider = ({ children }) => {
     deleteGroceryItem,
     addGroceryItem,
     updateGroceryItem,
+    filterGroceryItems,
+    searchGroceryItem,
     toggleModal
   }}>
     {children}
